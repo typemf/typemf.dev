@@ -4,6 +4,10 @@ description: Install the VS Code extension, create your first model and generate
 ---
 
 import { Steps } from '@astrojs/starlight/components';
+import PipelineDiagram from '../../../components/PipelineDiagram.astro';
+import ModelDiagram from '../../../components/ModelDiagram.astro';
+
+<PipelineDiagram />
 
 <Steps>
 
@@ -65,6 +69,12 @@ util/LibraryTypeGuards.ts
 ```
 
 All files are regenerated on every run, so don't edit them. To customize a class, subclass its `Impl` class and pass a factory that creates your subclass to `LibraryPackageImpl.init(factory)`, before anything accesses `LibraryPackageImpl.eINSTANCE`.
+
+## The Library model
+
+The examples use a small model: a `Library` contains `Writer`s and `Book`s, and `Writer.books` and `Book.author` are opposites. You can open the [`library.ecore`](https://github.com/typemf/typemf.dev/tree/main/examples/library) in the Instance Editor.
+
+<ModelDiagram />
 
 ## Load and save a model
 

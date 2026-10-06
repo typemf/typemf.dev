@@ -18,6 +18,7 @@ hero:
 ---
 
 import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
+import PipelineDiagram from '../../components/PipelineDiagram.astro';
 
 <p align="center">
 	<a href="https://www.npmjs.com/package/@typemf/core"><img alt="npm version" src="https://img.shields.io/npm/v/@typemf/core?color=164C99" /></a>
@@ -42,6 +43,12 @@ npm install @typemf/core
 		Node, the browser and VS Code.
 	</Card>
 </CardGrid>
+
+## How it works
+
+Define a model, generate TypeScript code from it, and load and save instances as XMI.
+
+<PipelineDiagram />
 
 ## Code showcase
 
