@@ -1,0 +1,16 @@
+/* Brand: blue #164C99 (from logo); lighter blue for dark mode. */
+:root {
+	--sl-color-accent-low: #d6e2f5;
+	--sl-color-accent: #164c99;
+	--sl-color-accent-high: #0e3470;
+	--sl-color-white: #000000;
+	--sl-color-black: #ffffff;
+}
+
+:root[data-theme='dark'] {
+	--sl-color-accent-low: #10264a;
+	--sl-color-accent: #5b8ddb;
+	--sl-color-accent-high: #a9c4ee;
+	--sl-color-white: #ffffff;
+	--sl-color-black: #000000;
+}

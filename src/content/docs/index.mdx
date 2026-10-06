@@ -1,0 +1,92 @@
+---
+title: TypeMF
+description: The Eclipse Modeling Framework for TypeScript and VS Code.
+template: splash
+hero:
+  tagline: EMF for TypeScript and VS Code.
+  image:
+    light: ../../assets/logo-light.svg
+    dark: ../../assets/logo-dark.svg
+  actions:
+    - text: Install the VS Code extension and create your first model
+      link: /docs/getting-started/
+      icon: right-arrow
+    - text: View on GitHub
+      link: https://github.com/typemf/typemf
+      icon: external
+      variant: minimal
+---
+
+import { Badge, Card, CardGrid } from '@astrojs/starlight/components';
+
+<p align="center">
+	<a href="https://www.npmjs.com/package/@typemf/core"><img alt="npm version" src="https://img.shields.io/npm/v/@typemf/core?color=164C99" /></a>
+	<a href="https://github.com/typemf/typemf/issues"><Badge text="Preview: help shape 1.0" variant="caution" size="medium" /></a>
+</p>
+
+```sh
+npm install @typemf/core
+```
+
+<CardGrid stagger>
+	<Card title="Model-first" icon="pencil">
+		Define your model once and generate your TypeScript code from it.
+	</Card>
+	<Card title="Real model semantics" icon="random">
+		Opposites and containment stay consistent automatically. Cross-document references resolve through the resource set.
+	</Card>
+	<Card title="EMF-compatible" icon="puzzle">
+		Reads and writes Ecore models and XMI documents in EMF's formats.
+	</Card>
+	<Card title="Runs everywhere" icon="rocket">
+		Node, the browser and VS Code.
+	</Card>
+</CardGrid>
+
+## Code showcase
+
+Generated from an Ecore model, with EMF semantics built in:
+
+```ts
+const factory = LibraryPackageImpl.eINSTANCE.getEFactoryInstance() as LibraryFactory;
+
+const writer = factory.createWriter();
+const book = factory.createBook();
+
+book.setAuthor(writer);
+writer.getBooks().size(); // 1, the opposite was updated
+
+const city = factory.createLibrary();
+const campus = factory.createLibrary();
+city.getBooks().add(book);
+campus.getBooks().add(book); // moves the book
+city.getBooks().size(); // 0
+(book.eContainer() as Library) === campus; // true
+```
+
+See [Getting started](/docs/getting-started/) for the full path from `.ecore` file to a saved XMI document.
+
+## The Instance Editor
+
+Edit your `.ecore` models and model instances in VS Code, with a tree on the left and a property editor on the right.
+
+![The TypeMF Instance Editor showing the Library model: a tree of the library package and the properties of the writers reference.](../../assets/instance-editor.png)
+
+## TypeMF and TMF
+
+TypeMF builds on ideas from [TMF](https://github.com/tripsnek/tmf), a lightweight TypeScript take on EMF by Tripsnek that is built for JSON-based full-stack apps. TypeMF goes the other way: it aims to be EMF-compatible, as far as TypeScript allows, with the Ecore metamodel at runtime, dynamic objects without generated code, resources with URIs and cross-document references, change notifications, and XMI that follows EMF's conventions. If you need a small, JSON-first library, look at TMF. If you need EMF's reflective layer in TypeScript, use TypeMF.
+
+## Roadmap and limitations
+
+TypeMF is a preview on the way to 1.0. Known limitations today:
+
+- `EMap` is not supported.
+- An XMI document must have exactly one root object. The `<xmi:XMI>` wrapper for several roots is not supported.
+
+Missing something else? [Open an issue](https://github.com/typemf/typemf/issues) and help shape 1.0.
+
+## About
+
+TypeMF is created by [Bernhard J. Berger](https://bergerbd.de), Hamburg University of Technology. It is one result of a [Short-Term Scientific Mission (STSM)](https://roar-net.eu/grants/stsm/afa8d8cf/) within the COST Action [ROAR-NET](https://roar-net.eu) (CA22137).
+
+TypeMF is open source under the Apache-2.0 license. Find the code, report issues and contribute on [GitHub](https://github.com/typemf/typemf).

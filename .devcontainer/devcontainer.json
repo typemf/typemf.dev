@@ -1,0 +1,21 @@
+{
+  "name": "typemf.dev",
+  "image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+  "features": {
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+  "postCreateCommand": "corepack enable && corepack prepare pnpm@latest --activate",
+  "forwardPorts": [4321],
+  "portsAttributes": {
+    "4321": { "label": "Astro dev server", "onAutoForward": "notify" }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  }
+}
